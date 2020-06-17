@@ -7,10 +7,10 @@
  */
 
 import React from 'react';
-import {View, Text, StatusBar, ScrollView, Dimensions} from 'react-native';
+import {View, Text, StatusBar, ScrollView, Button} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+// import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const colors = {
   themeColor: '#4263ec',
@@ -50,6 +50,7 @@ const tasks = [
 const Task = ({task, icon, theme, stamp}) => {
   return (
     <View
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         backgroundColor: colors.white,
         flexDirection: 'row',
@@ -61,17 +62,21 @@ const Task = ({task, icon, theme, stamp}) => {
         alignItems: 'center',
         justifyContent: 'space-between',
       }}>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <MaterialCommunityIcons
           name={icon}
           size={30}
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{color: theme, marginRight: 5}}
         />
         <View>
+          {/* eslint-disable-next-line react-native/no-inline-styles */}
           <Text style={{fontSize: 16}}>{task}</Text>
           <Text style={{color: colors.greyish}}>{stamp}</Text>
         </View>
       </View>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
       <View style={{flexDirection: 'row'}}>
         <MaterialCommunityIcons
           name="pencil"
@@ -81,6 +86,7 @@ const Task = ({task, icon, theme, stamp}) => {
         <MaterialCommunityIcons
           name="trash-can"
           size={30}
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{color: theme, marginLeft: 5}}
         />
       </View>
@@ -88,14 +94,14 @@ const Task = ({task, icon, theme, stamp}) => {
   );
 };
 
-const {width, height} = Dimensions.get('window');
-
-export default function TaskApp() {
+export default function TaskApp({navigation}) {
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <View style={{flex: 1, backgroundColor: colors.themeColor, paddingTop: 25}}>
       <StatusBar barStyle="light-content" backgroundColor={colors.themeColor} />
       <View style={{backgroundColor: colors.themeColor}}>
         <View
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             padding: 16,
             flexDirection: 'row',
@@ -104,22 +110,36 @@ export default function TaskApp() {
           <MaterialCommunityIcons
             name="text"
             size={30}
-            style={{color: colors.white}}
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{color: colors.white, padding: 5}}
           />
+          {/* eslint-disable-next-line react-native/no-inline-styles */}
           <View style={{flexDirection: 'row'}}>
             <MaterialCommunityIcons
               name="bell-outline"
               size={30}
-              style={{color: colors.white}}
+              // eslint-disable-next-line react-native/no-inline-styles
+              style={{color: colors.white, padding: 5}}
             />
-            <AntDesign name="user" size={30} style={{color: colors.white}} />
+            {/* <Button onPress={() => navigation.navigate('Details')}> */}
+            <AntDesign
+              name="message1"
+              size={28}
+              // eslint-disable-next-line react-native/no-inline-styles
+              style={{color: colors.white, padding: 5}}
+              onPress={() => navigation.navigate('Message')}
+            />
+            {/* </Button> */}
           </View>
         </View>
+        {/* eslint-disable-next-line react-native/no-inline-styles */}
         <View style={{padding: 16}}>
+          {/* eslint-disable-next-line react-native/no-inline-styles */}
           <Text style={{color: colors.white, fontSize: 30}}>
             {'Hello,\nCharles'}
           </Text>
           <View
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               paddingHorizontal: 16,
               paddingVertical: 6,
@@ -135,6 +155,7 @@ export default function TaskApp() {
               size={30}
               style={{color: colors.white}}
             />
+            {/* eslint-disable-next-line react-native/no-inline-styles */}
             <View style={{flexDirection: 'row'}}>
               <MaterialCommunityIcons
                 name="microphone"
@@ -152,6 +173,7 @@ export default function TaskApp() {
       </View>
 
       <View
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           padding: 20,
           flexDirection: 'row',
@@ -160,10 +182,12 @@ export default function TaskApp() {
           alignItems: 'center',
           borderTopLeftRadius: 20,
         }}>
+        {/* eslint-disable-next-line react-native/no-inline-styles */}
         <Text style={{fontSize: 24}}>Tasks</Text>
         <AntDesign
           name="plus"
           size={40}
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             color: colors.themeColor,
             backgroundColor: colors.backgroundColor,
@@ -174,7 +198,7 @@ export default function TaskApp() {
       </View>
 
       <ScrollView style={{backgroundColor: colors.background}}>
-        {tasks.map((task) => (
+        {tasks.map(task => (
           <Task
             task={task.task}
             icon={task.icon}
